@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# This script stops the 4-to_infinity_and_beyond process by writing to /proc
+
+# Get the PID
+pid=$(pgrep -f "4-to_infinity_and_beyond")
+
+# Terminate using /proc interface
+if [ -n "$pid" ]; then
+    echo -15 > /proc/$pid/oom_score_adj
+fi
